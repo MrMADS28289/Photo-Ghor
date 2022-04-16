@@ -16,7 +16,7 @@ const Banner = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>Zebra with neture and sun</h3>
+                        <h3>Wildlife Photographar.</h3>
                         <p>Zebra the most beautiful animal
                             Zebras are the herd animals and they are largely found in the continent of Africa. The white and black strips on their body looks very beautiful. The most common species of zebras found in Africa is "Burch ell's Zebra.</p>
                     </Carousel.Caption>
@@ -30,7 +30,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Zebra and Giraffes together .</h3>
+                        <h3>Wildlife Photographar.</h3>
                         <p>The giraffe is a tall African hoofed mammal belonging to the genus Giraffa. It is the tallest living terrestrial animal and the largest ruminant on Earth.Zebras are the herd animals and they are largely found in the continent of Africa. The white and black strips on their body looks very beautiful. The most common species of zebras found in Africa is "Burch ell's Zebra.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -43,7 +43,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h3>Elephant with stky and nature.</h3>
+                        <h3>Wildlife Photographar.</h3>
                         <p>Elephant are highly intelligent animals with complex emotions, feelings, compassion and self-awareness (elephants are one of very few species to recognize themselves in a mirror!). The gestation period of an elephant is 22 months. That's almost 2 years, the longest pregnancy of any mammal!</p>
                     </Carousel.Caption>
                 </Carousel.Item>

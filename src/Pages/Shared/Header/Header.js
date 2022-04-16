@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import logo from '../../Images/logo.png'
+import logo from '../../../Images/logo.png'
 import CustomLink from './CustomLink';
 
 const Header = () => {
@@ -10,7 +10,7 @@ const Header = () => {
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     <img height={30} src={logo} alt="" />
-                    <span className='text-warning fw-bolder fst-italic'>MADS</span> Wildlife Photography
+                    <span className='text-warning fw-bolder fst-italic ps-2'>FHOTOGHOR</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
