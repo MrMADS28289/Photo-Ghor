@@ -6,7 +6,7 @@ import elephent from '../../Images/elephant.jpg';
 
 const Banner = () => {
     return (
-        <div>
+        <div id='home'>
             <Carousel fade>
                 <Carousel.Item>
                     <img

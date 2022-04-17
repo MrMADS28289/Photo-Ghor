@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <Navbar className='fixed-top' bg="light" expand="lg">
             <Container>
-                <Navbar.Brand as={Link} to="/">
+                <Navbar.Brand href="#home">
                     <img height={30} src={logo} alt="" />
                     <span className='text-warning fw-bolder fst-italic ps-2'>FHOTOGHOR</span>
                 </Navbar.Brand>

@@ -1,12 +1,14 @@
 import React from 'react';
 import Banner from './Banner';
+import Photographar from './Photographar';
 import Services from './Services';
 
 const Home = () => {
     return (
         <>
-            <Banner></Banner>
-            <Services></Services>
+            <Banner />
+            <Photographar />
+            <Services />
         </>
     );
 };
