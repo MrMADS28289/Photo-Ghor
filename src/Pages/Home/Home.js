@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from './Banner';
+import BestAlbum from './BestAlbum';
 import Photographar from './Photographar';
 import Services from './Services';
 
@@ -14,7 +15,7 @@ const Home = ({ handleAddToCart3 }) => {
             <Banner />
             <Photographar />
             <Services handleAddToCart={handleAddToCart} />
-            <h1>best album</h1>
+            <BestAlbum />
         </>
     );
 };
