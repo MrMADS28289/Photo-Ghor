@@ -48,6 +48,7 @@ const Header = () => {
                             <p
                                 className='pt-0 lh-1 bg-info text-white rounded-circle position-absolute p-1 ms-4 mb-4'>{addedServices.length}</p><ShoppingCartIcon height={30} /></Nav.Link>
                         <Nav.Link as={CustomLink} to="/login">Login</Nav.Link>
+                        <Nav.Link as={CustomLink} to="/register">Sign up</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
