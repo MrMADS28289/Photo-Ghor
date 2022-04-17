@@ -6,6 +6,8 @@ import Home from './Pages/Home/Home';
 import Footer from './Pages/Shared/Footer/Footer';
 import Cart from './Pages/Cart/Cart';
 import React, { useState } from 'react';
+import NotFound from './Pages/Shared/NotFound/NotFound';
+import CheckOut from './Pages/Cart/CheckOut';
 
 export const cartContext = React.createContext([]);
 
@@ -29,9 +31,11 @@ function App() {
           <Route path='/home' element={<Home handleAddToCart3={handleAddToCart3}></Home>}></Route>
           <Route path='/about' element={<About></About>}></Route>
           <Route path='/shopincart' element={<Cart></Cart>}></Route>
+          <Route path='/checkout' element={<CheckOut />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </cartContext.Provider>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }

@@ -6,9 +6,6 @@ import Services from './Services';
 const Home = ({ handleAddToCart3 }) => {
 
     const handleAddToCart = (props) => {
-        // handleAddToCart3(props);
-        // handleAddToCart3(props)
-        console.log(props)
         handleAddToCart3(props)
     }
 
@@ -17,6 +14,7 @@ const Home = ({ handleAddToCart3 }) => {
             <Banner />
             <Photographar />
             <Services handleAddToCart={handleAddToCart} />
+            <h1>best album</h1>
         </>
     );
 };
