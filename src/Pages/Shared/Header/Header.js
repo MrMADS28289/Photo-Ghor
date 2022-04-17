@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import logo from '../../../Images/logo.png'
 import CustomLink from './CustomLink';
+import { ShoppingCartIcon } from '@heroicons/react/solid'
 
 const Header = () => {
     return (
@@ -24,6 +24,7 @@ const Header = () => {
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
+                        <Nav.Link as={CustomLink} to="/shopincart"><ShoppingCartIcon height={25} /></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

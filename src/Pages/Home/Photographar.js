@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import photographar from '../../Images/photographar.jpg';
 import facebook from '../../Images/icon/facebook.png';
 import twetter from '../../Images/icon/twetter.png';
