@@ -6,7 +6,7 @@ import CustomLink from './CustomLink';
 
 const Header = () => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className='fixed-top' bg="light" expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     <img height={30} src={logo} alt="" />
@@ -17,9 +17,9 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Nav.Link as={CustomLink} to="/home">Home</Nav.Link>
                         <Nav.Link as={CustomLink} to="/about">About</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                        <NavDropdown title="Pages" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="/home#photographar">Photographar</NavDropdown.Item>
+                            <NavDropdown.Item href="/home#services">Services</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
