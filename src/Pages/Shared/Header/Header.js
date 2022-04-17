@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import logo from '../../../Images/logo.png'
 import CustomLink from './CustomLink';
 import { ShoppingCartIcon } from '@heroicons/react/solid'
+import { cartContext } from '../../../App';
+
 
 const Header = () => {
+
+    const addedServices = useContext(cartContext);
+
     return (
         <Navbar
             className='fixed-top'
@@ -36,7 +41,13 @@ const Header = () => {
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link as={CustomLink} to="/shopincart"><ShoppingCartIcon height={25} /></Nav.Link>
+                        <Nav.Link
+                            className='position-relative'
+                            as={CustomLink}
+                            to="/shopincart">
+                            <p
+                                className='pt-0 lh-1 bg-info text-white rounded-circle position-absolute p-1 ms-4 mb-4'>{addedServices.length}</p><ShoppingCartIcon height={30} /></Nav.Link>
+                        <Nav.Link as={CustomLink} to="/login">Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

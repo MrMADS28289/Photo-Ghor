@@ -8,6 +8,7 @@ import Cart from './Pages/Cart/Cart';
 import React, { useState } from 'react';
 import NotFound from './Pages/Shared/NotFound/NotFound';
 import CheckOut from './Pages/Cart/CheckOut';
+import Login from './Pages/Login/Login';
 
 export const cartContext = React.createContext([]);
 
@@ -24,14 +25,15 @@ function App() {
 
   return (
     <div>
-      <Header></Header>
       <cartContext.Provider value={cart}>
+        <Header></Header>
         <Routes>
           <Route path='/' element={<Home handleAddToCart3={handleAddToCart3}></Home>}></Route>
           <Route path='/home' element={<Home handleAddToCart3={handleAddToCart3}></Home>}></Route>
           <Route path='/about' element={<About></About>}></Route>
           <Route path='/shopincart' element={<Cart></Cart>}></Route>
           <Route path='/checkout' element={<CheckOut />}></Route>
+          <Route path='/login' element={<Login></Login>}></Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </cartContext.Provider>
