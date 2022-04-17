@@ -10,6 +10,8 @@ import NotFound from './Pages/Shared/NotFound/NotFound';
 import CheckOut from './Pages/Cart/CheckOut';
 import Login from './Pages/Login/Login';
 import Regester from './Pages/Login/Regester';
+import RequerAuth from './Pages/RequerAuth/RequerAuth';
+import Blog from './Pages/Blog/Blog';
 
 export const cartContext = React.createContext([]);
 
@@ -32,8 +34,13 @@ function App() {
           <Route path='/' element={<Home handleAddToCart3={handleAddToCart3}></Home>}></Route>
           <Route path='/home' element={<Home handleAddToCart3={handleAddToCart3}></Home>}></Route>
           <Route path='/about' element={<About></About>}></Route>
+          <Route path='/blog' element={<Blog></Blog>}></Route>
           <Route path='/shopincart' element={<Cart></Cart>}></Route>
-          <Route path='/checkout' element={<CheckOut />}></Route>
+          <Route path='/checkout' element={
+            <RequerAuth>
+              <CheckOut />
+            </RequerAuth>
+          }></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/register' element={<Regester></Regester>}></Route>
           <Route path='*' element={<NotFound />}></Route>

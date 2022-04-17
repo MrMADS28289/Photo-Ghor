@@ -1,13 +1,41 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import facebook from '../../Images/icon/facebook.png';
 import google from '../../Images/icon/google.png';
 import logo from '../../Images/logo.png'
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
+    const [
+        signInWithEmailAndPassword,
+        user3,
+        loading3,
+        error3,
+    ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(
+        auth
+    );
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    if (error || error1 || error3) {
+        console.log(error, error1, error3);
+    }
+    if (loading || loading1 || loading3) {
+        return <p>Loading...</p>;
+    }
+    if (user || user1 || user3) {
+        navigate(from, { replace: true });
+    }
 
     return (
         <Row className='mt-5 pt-5 mx-auto'>
@@ -16,11 +44,11 @@ const Login = () => {
             </span>
             <Row className='mt-5 mx-auto'>
                 <Col className='mx-auto p-0' sm={12} md={8} lg={6}>
-                    <Button className='w-100 mx-auto mb-3 border shadow-lg' variant="white" type="submit">
+                    <Button onClick={() => signInWithGoogle()} className='w-100 mx-auto mb-3 border shadow-lg' variant="white" type="submit">
                         <img className='me-3' height={30} src={google} alt="" />
                         Login with Google
                     </Button>
-                    <Button className='w-100 mx-auto mb-3' variant="primary" type="submit">
+                    <Button onClick={() => signInWithFacebook()} className='w-100 mx-auto mb-3' variant="primary" type="submit">
                         <img className='me-3' height={30} src={facebook} alt="" />
                         Login with Facebook
                     </Button>
@@ -30,15 +58,24 @@ const Login = () => {
                 <Form className='mx-auto'>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
                     </Form.Group>
-                    <a className='text-decoration-none' href="#ls">Forgot password?</a>
-                    <Button name='login' className='w-100 mx-auto my-3' variant="info" type="submit">
+                    <Button
+                        onClick={async () => {
+                            await sendPasswordResetEmail(email);
+                            alert('Sent email');
+                        }}
+                        className='bg-white border-0 text-primary' >Forgot password?</Button>
+                    <Button
+                        name='login'
+                        className='w-100 mx-auto my-3'
+                        variant="info" type="submit"
+                        onClick={() => signInWithEmailAndPassword(email, password)}>
                         Login
                     </Button>
 

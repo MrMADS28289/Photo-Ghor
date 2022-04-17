@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import facebook from '../../Images/icon/facebook.png';
 import google from '../../Images/icon/google.png';
 import logo from '../../Images/logo.png';
@@ -9,6 +11,29 @@ const Regester = () => {
 
     const [agree, setAgree] = useState(true);
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confiarmPassword, setconfiarmPassword] = useState('');
+    const [displayName, setDisplayName] = useState('');
+    const [updateProfile, updating] = useUpdateProfile(auth);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+
+    if (error) {
+        console.log(error)
+    }
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+    if (user) {
+        // updateProfile({ displayName })
+        console.log(user)
+    }
 
     return (
         <Row className='mt-5 pt-5 mx-auto'>
@@ -31,25 +56,44 @@ const Regester = () => {
                 <Form className='mx-auto'>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="name" placeholder="Enter Your Name" />
+                        <Form.Control
+                            type="displayName"
+                            value={displayName}
+                            onChange={(e) => setDisplayName(e.target.value)}
+                            placeholder="Enter Your Name" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                            onChange={(e) => setEmail(e.target.value)} required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            onChange={(e) => setPassword(e.target.value)} required />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3" controlId="formBasicConfiarmPassword">
                         <Form.Label>Confairm Password</Form.Label>
-                        <Form.Control type="password" placeholder="Confairm Password" />
+                        <Form.Control
+                            type="password"
+                            onChange={(e) => setconfiarmPassword(e.target.value)}
+                            placeholder="Confairm Password" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check onClick={() => setAgree(!agree)} type="checkbox" label="I agree the terms & condition" />
                     </Form.Group>
-                    <Button disabled={agree} name='login' className='w-100 mx-auto mb-3' variant="info" type="submit">
+                    <Button
+                        disabled={agree}
+                        name='login'
+                        className='w-100 mx-auto mb-3'
+                        variant="info"
+                        type="submit"
+                        onClick={() => createUserWithEmailAndPassword(email, password)}>
                         Sign up
                     </Button>
                 </Form>
