@@ -49,6 +49,13 @@ const Login = () => {
                     </Button>
                 </Col>
             </Row>
+            <Row className='mx-auto my-3'>
+                <Col className='mx-auto p-0 d-flex justify-content-center align-items-center' sm={12} md={8} lg={6}>
+                    <div style={{ marginRight: '2px', borderBottom: '1px solid black', width: '50%' }}></div>
+                    or
+                    <div style={{ marginLeft: '2px', borderBottom: '1px solid black', width: '50%' }}></div>
+                </Col>
+            </Row>
             <Col className='mx-auto shadow-lg px-4 pt-5' sm={12} md={8} lg={6}>
                 <Form className='mx-auto'>
                     <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -21,7 +21,7 @@ const Header = () => {
 
     return (
         <Navbar
-            className='fixed-top'
+            className='fixed-top container-fluid'
             bg="light"
             expand="lg">
             <Container>
