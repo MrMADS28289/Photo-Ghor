@@ -27,7 +27,7 @@ const Cart = () => {
                 style={{ display: addedServices.length ? '' : 'none' }}
                 className='w-100 mt-2'
                 variant="primary"
-                onClick={() => navigate('/checkout')}
+                onClick={() => navigate('/service/checkout')}
             >Buy Service <ArrowCircleRightIcon height={20} />
             </Button>
         </Container>

@@ -1,10 +1,15 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 import { ShoppingCartIcon } from '@heroicons/react/solid';
+import { useNavigate } from 'react-router-dom';
 
 const Service = ({ service, handleAddToCart2 }) => {
 
-    const { img, name, price, title } = service;
+    const { img, name, price, title, id } = service;
+    const navigate = useNavigate();
+    const handleServiceNavigate = (id) => {
+        navigate(`/service/${id}`)
+    }
 
     return (
         <Col className='mb-4' sm={12} md={6} lg={4}>
@@ -14,9 +19,14 @@ const Service = ({ service, handleAddToCart2 }) => {
                     <Card.Title>{name}</Card.Title>
                     <h6>$ {price}</h6>
                     <Card.Text>{title}</Card.Text>
-                    <Button onClick={() => handleAddToCart2(service)} className='w-100 mt-2' variant="primary">
-                        Add to cart
-                        <ShoppingCartIcon height={20} /></Button>
+                    <div>
+                        <Button onClick={() => handleAddToCart2(service)} className='me-1 mt-2' variant="warning">
+                            Add to cart
+                            <ShoppingCartIcon height={20} /></Button>
+                        <Button onClick={() => handleServiceNavigate(id)} className='mt-2' variant="primary">
+                            Buy Service
+                            <ShoppingCartIcon height={20} /></Button>
+                    </div>
                 </Card.Body>
             </Card>
         </Col>

@@ -12,6 +12,7 @@ import Login from './Pages/Login/Login';
 import Regester from './Pages/Login/Regester';
 import RequerAuth from './Pages/RequerAuth/RequerAuth';
 import Blog from './Pages/Blog/Blog';
+import BuyService from './Pages/BuyService/BuyService';
 
 export const cartContext = React.createContext([]);
 
@@ -25,7 +26,6 @@ function App() {
     setCart(newCart)
   }
 
-
   return (
     <div>
       <cartContext.Provider value={cart}>
@@ -33,12 +33,22 @@ function App() {
         <Routes>
           <Route path='/' element={<Home handleAddToCart3={handleAddToCart3}></Home>}></Route>
           <Route path='/home' element={<Home handleAddToCart3={handleAddToCart3}></Home>}></Route>
+          <Route path='/service/:serviceId' element={
+            <RequerAuth>
+              <BuyService></BuyService>
+            </RequerAuth>
+          }></Route>
+          <Route path='/shopincart/:serviceId' element={
+            <RequerAuth>
+              <BuyService></BuyService>
+            </RequerAuth>
+          }></Route>
           <Route path='/about' element={<About></About>}></Route>
           <Route path='/blog' element={<Blog></Blog>}></Route>
           <Route path='/shopincart' element={<Cart></Cart>}></Route>
           <Route path='/checkout' element={
             <RequerAuth>
-              <CheckOut />
+              <CheckOut></CheckOut>
             </RequerAuth>
           }></Route>
           <Route path='/login' element={<Login></Login>}></Route>

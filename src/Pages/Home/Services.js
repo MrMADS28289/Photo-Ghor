@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Container, Row } from 'react-bootstrap';
+import useService from '../../useService/useService';
 import Service from './Service';
 
 const Services = ({ handleAddToCart }) => {
 
-    const [services, setServices] = useState([]);
-
-    useEffect(() => {
-        fetch('data.json')
-            .then(res => res.json())
-            .then(data => setServices(data));
-    }, [])
+    const [services] = useService();
 
     const handleAddToCart2 = (props) => {
         handleAddToCart(props)

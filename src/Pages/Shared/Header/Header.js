@@ -54,11 +54,11 @@ const Header = () => {
                             as={CustomLink}
                             to="/shopincart">
                             <p
-                                className='pt-0 lh-1 bg-info text-white rounded-circle position-absolute p-1 ms-4 mb-4'>{addedServices.length}</p><ShoppingCartIcon height={30} /></Nav.Link>
+                                className='pt-0 lh-1 bg-warning text-dark rounded-circle position-absolute p-1 ms-4 mb-4'>{addedServices.length}</p><ShoppingCartIcon height={30} /></Nav.Link>
                         {
                             !user?.uid ? <Nav.Link as={CustomLink} to="/login">Login</Nav.Link>
                                 :
-                                <button className='bg-white border-0' onClick={handleLogout} >Logout</button>
+                                <button className='bg-white border-0 mb-2' onClick={handleLogout} >Logout</button>
                         }
                         <Nav.Link as={CustomLink} to="/register">Sign up</Nav.Link>
                     </Nav>
