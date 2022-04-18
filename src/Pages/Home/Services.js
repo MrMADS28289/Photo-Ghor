@@ -17,9 +17,7 @@ const Services = ({ handleAddToCart }) => {
     }
 
     return (
-        <Container
-            id='services'
-            className='mt-5'>
+        <Container id='services' className='mt-5'>
             <h3 className='text-center my-3'>Servises</h3>
             <Row className='mx-auto'>
                 {

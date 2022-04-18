@@ -15,19 +15,19 @@ const Header = () => {
     const addedServices = useContext(cartContext);
     const [user] = useAuthState(auth);
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                const uid = user.uid;
-                // ...
-            } else {
-                // User is signed out
-                // ...
-            }
-        });
-    }, { user });
+    // useEffect(() => {
+    //     onAuthStateChanged(auth, (user) => {
+    //         if (user) {
+    //             // User is signed in, see docs for a list of available properties
+    //             // https://firebase.google.com/docs/reference/js/firebase.User
+    //             const uid = user.uid;
+    //             // ...
+    //         } else {
+    //             // User is signed out
+    //             // ...
+    //         }
+    //     });
+    // }, { user });
 
     const handleLogout = () => {
         signOut(auth)
@@ -80,7 +80,7 @@ const Header = () => {
                                 :
                                 <button className='bg-white border-0' onClick={handleLogout} >Logout</button>
                         }
-                        <Nav.Link as={CustomLink} to="/">Sign up</Nav.Link>
+                        <Nav.Link as={CustomLink} to="/register">Sign up</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

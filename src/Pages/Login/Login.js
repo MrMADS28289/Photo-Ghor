@@ -7,7 +7,6 @@ import google from '../../Images/icon/google.png';
 import logo from '../../Images/logo.png'
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
-
 const Login = () => {
 
     const navigate = useNavigate();
@@ -15,22 +14,16 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
-    const [
-        signInWithEmailAndPassword,
-        user3,
-        loading3,
-        error3,
-    ] = useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(
-        auth
-    );
+    const [signInWithEmailAndPassword, user3, loading3, error3,] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(auth);
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    if (error || error1 || error3) {
-        console.log(error, error1, error3);
+    let errorElement;
+    if (error || error1 || error2 || error3) {
+        errorElement = <p className='text-danger'>{error3?.message} {error1?.message} {error2?.message} {error?.message}</p>
     }
-    if (loading || loading1 || loading3) {
+    if (loading || loading1 || loading3 || sending) {
         return <p>Loading...</p>;
     }
     if (user || user1 || user3) {
@@ -65,6 +58,9 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
                     </Form.Group>
+                    {
+                        errorElement
+                    }
                     <Button
                         onClick={async () => {
                             await sendPasswordResetEmail(email);

@@ -22,7 +22,7 @@ const CartDetails = ({ service }) => {
                     <div className='ms-2 p-3'>
                         <h5>{name}</h5>
                         <h6>$ {price}</h6>
-                        <p>{title.slice(0, 40)}...</p>
+                        <p title={title}>{title.slice(0, 40)}...</p>
                     </div>
                 </div>
             </div>

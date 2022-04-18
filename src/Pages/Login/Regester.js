@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import facebook from '../../Images/icon/facebook.png';
 import google from '../../Images/icon/google.png';
 import logo from '../../Images/logo.png';
+import Loading from '../Shared/Loading/Loading';
 
 const Regester = () => {
 
@@ -16,23 +17,25 @@ const Regester = () => {
     const [confiarmPassword, setconfiarmPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
     const [updateProfile, updating] = useUpdateProfile(auth);
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
+    const [signInWithGoogle, user2, loading2, error2] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, user1, loading1, error1] = useSignInWithFacebook(auth);
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-
-    if (error) {
-        console.log(error)
+    let error3;
+    if (password !== confiarmPassword) {
+        error3 = 'password did not match!';
     }
-    if (loading) {
-        return <p>Loading...</p>;
+    let errorElement;
+    if (error || error1 || error2 || error3) {
+        errorElement = <p className='text-danger'>{error1?.message} {error3} {error2?.message} {error?.message}</p>
     }
-    if (user) {
-        // updateProfile({ displayName })
-        console.log(user)
+    if (loading || loading1 || loading2 || updating) {
+        return <Loading></Loading>;
+    }
+    if (user || user1 || user2) {
+        navigate(from, { replace: true });
     }
 
     return (
@@ -42,18 +45,18 @@ const Regester = () => {
             </span>
             <Row className='mt-2 mx-auto'>
                 <Col className='mx-auto p-0' sm={12} md={8} lg={6}>
-                    <Button className='w-100 mx-auto mb-3 border shadow-lg' variant="white" type="submit">
+                    <Button onClick={() => signInWithGoogle()} className='w-100 mx-auto mb-3 border shadow-lg' variant="white" type="submit">
                         <img className='me-3' height={30} src={google} alt="" />
                         Login with Google
                     </Button>
-                    <Button className='w-100 mx-auto mb-3' variant="primary" type="submit">
+                    <Button onClick={() => signInWithFacebook()} className='w-100 mx-auto mb-3' variant="primary" type="submit">
                         <img className='me-3' height={30} src={facebook} alt="" />
                         Login with Facebook
                     </Button>
                 </Col>
             </Row>
             <Col className='mx-auto shadow-lg px-4 pt-5' sm={12} md={8} lg={6}>
-                <Form className='mx-auto'>
+                <Form onSubmit={() => updateProfile(displayName)} className='mx-auto'>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Name</Form.Label>
                         <Form.Control
@@ -84,6 +87,9 @@ const Regester = () => {
                             onChange={(e) => setconfiarmPassword(e.target.value)}
                             placeholder="Confairm Password" required />
                     </Form.Group>
+                    {
+                        errorElement
+                    }
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check onClick={() => setAgree(!agree)} type="checkbox" label="I agree the terms & condition" />
                     </Form.Group>

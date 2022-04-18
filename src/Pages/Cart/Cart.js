@@ -5,7 +5,6 @@ import CartDetails from './CartDetails';
 import { ArrowCircleRightIcon } from '@heroicons/react/solid';
 import { useNavigate } from 'react-router-dom';
 
-
 const Cart = () => {
 
     const addedServices = useContext(cartContext);
