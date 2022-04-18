@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import logo from '../../../Images/logo.png'
 import CustomLink from './CustomLink';
 import { ShoppingCartIcon } from '@heroicons/react/solid'
 import { cartContext } from '../../../App';
 import auth from '../../../firebase.init';
-import { signOut, onAuthStateChanged } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 
@@ -15,28 +15,8 @@ const Header = () => {
     const addedServices = useContext(cartContext);
     const [user] = useAuthState(auth);
 
-    // useEffect(() => {
-    //     onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             // User is signed in, see docs for a list of available properties
-    //             // https://firebase.google.com/docs/reference/js/firebase.User
-    //             const uid = user.uid;
-    //             // ...
-    //         } else {
-    //             // User is signed out
-    //             // ...
-    //         }
-    //     });
-    // }, { user });
-
     const handleLogout = () => {
-        signOut(auth)
-            .then(() => {
-                alert('log out')
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        signOut(auth);
     }
 
     return (

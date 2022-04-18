@@ -6,6 +6,8 @@ import facebook from '../../Images/icon/facebook.png';
 import google from '../../Images/icon/google.png';
 import logo from '../../Images/logo.png'
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -64,9 +66,10 @@ const Login = () => {
                     <Button
                         onClick={async () => {
                             await sendPasswordResetEmail(email);
-                            alert('Sent email');
+                            toast('Email Sent.')
                         }}
                         className='bg-white border-0 text-primary' >Forgot password?</Button>
+                    <ToastContainer />
                     <Button
                         name='login'
                         className='w-100 mx-auto my-3'
