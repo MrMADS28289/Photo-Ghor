@@ -19,9 +19,9 @@ const Photographar = () => {
                         <h6>4.7 Ratings</h6>
                         <p>I'm a wildlife photographar. I did take many wildlife photos. And my popular albums is Dark Cheta, White Goat, Blue Dove, Red Fish etc.</p>
                         <p>Phone: +007 7778888888</p>
-                        <h3 className='d-flex pe-3 pinter btn'><img className='pe-1' height={30} src={facebook} alt="" /> Facebook</h3>
-                        <h3 className='d-flex pe-3 btn'><img className='pe-1' height={30} src={twetter} alt="" />Twitter</h3>
-                        <h3 className='d-flex pe-3 btn'><img className='pe-1' height={30} src={linkedin} alt="" />Linkedin</h3>
+                        <h3 className='d-flex pe-3 pinter btn'><img className='pe-1 h-8' height={30} src={facebook} alt="" /> Facebook</h3>
+                        <h3 className='d-flex pe-3 btn'><img className='pe-1 h-8' height={30} src={twetter} alt="" />Twitter</h3>
+                        <h3 className='d-flex pe-3 btn'><img className='pe-1 h-8' height={30} src={linkedin} alt="" />Linkedin</h3>
                     </Col>
                 </Row>
             </div>

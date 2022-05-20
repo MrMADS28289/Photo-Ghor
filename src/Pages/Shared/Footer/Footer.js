@@ -12,6 +12,7 @@ const Footer = () => {
 
     return (
         <footer className='text-white p-5' style={{ backgroundColor: '#171716', marginTop: '800px' }}>
+
             <footer>
                 <section className='bg-footer-bg text-white p-6 grid md:grid-cols-4 gap-3 relative'>
                     <div>
@@ -63,10 +64,7 @@ const Footer = () => {
                     </div>
                 </section>
                 <section className='bg-[#151515] grid md:grid-cols-2 p-6'>
-                    <div className='m-6'>
-                        {/* <img src={logo} alt="" /> */}
-                        <h3 className='text-white mt-4'>All Rights Reserved {date}. &copy; by <span className='text-[#FF5400] cursor-pointer'>AUTO SHOWROOM</span></h3>
-                    </div>
+
                     <div className='m-6'>
                         {/* <img className='mb-3' src={payment} alt="" /> */}
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
@@ -102,6 +100,7 @@ const Footer = () => {
                     </div>
                 </section>
             </footer>
+
             <div className='text-center'>
                 <h4>Created with <svg height={30} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />

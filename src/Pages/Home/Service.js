@@ -20,8 +20,8 @@ const Service = ({ service, handleAddToCart2 }) => {
                     <h6>$ {price}</h6>
                     <Card.Text>{title}</Card.Text>
                     <Button onClick={() => handleAddToCart2(service)} className='mt-2 w-100' variant="warning">
-                        Add to cart
-                        <ShoppingCartIcon height={20} />
+                        <span className='flex items-center ml-10'>Add to cart
+                            <ShoppingCartIcon height={20} /></span>
                     </Button>
                 </Card.Body>
             </Card>

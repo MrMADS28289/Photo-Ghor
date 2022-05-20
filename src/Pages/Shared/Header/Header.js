@@ -21,13 +21,13 @@ const Header = () => {
 
     return (
         <Navbar
-            className='fixed-top container-fluid'
+            className='fixed-top container-fluid '
             bg="light"
             expand="lg">
             <Container>
-                <Navbar.Brand as={Link} to="/home#home">
+                <Navbar.Brand as={Link} to="/home#home" className='flex'>
                     <img
-                        height={30}
+                        className='h-8'
                         src={logo}
                         alt="" />
                     <span className='text-warning fw-bolder fst-italic ps-2'>FHOTOGHOR</span>
