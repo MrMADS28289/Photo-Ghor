@@ -19,14 +19,10 @@ const Service = ({ service, handleAddToCart2 }) => {
                     <Card.Title>{name}</Card.Title>
                     <h6>$ {price}</h6>
                     <Card.Text>{title}</Card.Text>
-                    <div>
-                        <Button onClick={() => handleAddToCart2(service)} className='me-1 mt-2' variant="warning">
-                            Add to cart
-                            <ShoppingCartIcon height={20} /></Button>
-                        <Button onClick={() => handleServiceNavigate(id)} className='mt-2' variant="primary">
-                            Buy Service
-                            <ShoppingCartIcon height={20} /></Button>
-                    </div>
+                    <Button onClick={() => handleAddToCart2(service)} className='mt-2 w-100' variant="warning">
+                        Add to cart
+                        <ShoppingCartIcon height={20} />
+                    </Button>
                 </Card.Body>
             </Card>
         </Col>
